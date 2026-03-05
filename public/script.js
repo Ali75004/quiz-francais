@@ -1,9 +1,11 @@
 // ── Game state ───────────────────────────────────────────
 const QUESTIONS_PER_GAME = 20;
+const STREAK_GOAL = 5;
 
 let questions     = [];
 let current       = 0;
 let score         = 0;
+let streak        = 0;  // consecutive correct answers
 let answered      = false;
 let images        = [];
 let imagesLoaded  = false;
@@ -74,6 +76,7 @@ function startGame() {
   questions = shuffle(QUESTIONS).slice(0, QUESTIONS_PER_GAME);
   current   = 0;
   score     = 0;
+  streak    = 0;
   showScreen('quiz');
   showQuestion();
 }
@@ -88,7 +91,7 @@ function showQuestion() {
   // Header
   progressBar.style.width = `${(current / total) * 100}%`;
   questionCount.textContent = `Question ${current + 1} / ${total}`;
-  scoreDisplay.textContent  = `Score : ${score}`;
+  updateStreakDisplay();
 
   // Question
   questionCat.textContent  = q.category;
@@ -122,17 +125,29 @@ function handleAnswer(chosen, btn, correctIdx) {
   if (chosen === correctIdx) {
     btn.classList.add('correct');
     score++;
-    scoreDisplay.textContent = `Score : ${score}`;
-    // Show popup with image
-    showPopup();
-    pendingNext = true;
+    streak++;
+    updateStreakDisplay();
+    if (streak >= STREAK_GOAL) {
+      streak = 0;
+      showPopup();
+      pendingNext = true;
+    } else {
+      setTimeout(() => nextQuestion(), 900);
+    }
   } else {
+    streak = 0;
     btn.classList.add('wrong');
-    // Reveal correct answer
     allBtns[correctIdx].classList.add('reveal');
-    // Auto-advance after delay
+    updateStreakDisplay();
     setTimeout(() => nextQuestion(), 1800);
   }
+}
+
+function updateStreakDisplay() {
+  const dots = Array.from({length: STREAK_GOAL}, (_, i) =>
+    `<span class="streak-dot${i < streak ? ' filled' : ''}"></span>`
+  ).join('');
+  scoreDisplay.innerHTML = `Score : ${score} &nbsp; ${dots}`;
 }
 
 function nextQuestion() {
@@ -143,14 +158,13 @@ function nextQuestion() {
 // ── Popup ─────────────────────────────────────────────────
 function showPopup() {
   const src = randomImage();
+  const bravoEl = document.querySelector('.popup-bravo');
+  if (bravoEl) bravoEl.textContent = '🔥 5 bonnes réponses !';
   if (src) {
     popupImg.src = src;
     popupImg.style.display = 'block';
-    const name = src.split('/').pop().replace(/\.[^.]+$/, '');
-    popupCaption.textContent = ''; // no filename shown
   } else {
     popupImg.style.display = 'none';
-    popupCaption.textContent = 'Continue comme ça !';
   }
   popupOverlay.classList.remove('hidden');
 }

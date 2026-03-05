@@ -122,9 +122,25 @@ html, body {
 .quiz-meta {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   color: rgba(255,255,255,.85);
   font-size: .85rem;
   font-weight: 600;
+}
+
+/* Streak dots */
+.streak-dot {
+  display: inline-block;
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,.6);
+  margin: 0 2px;
+  vertical-align: middle;
+  transition: background .2s, border-color .2s;
+}
+.streak-dot.filled {
+  background: #FFD700;
+  border-color: #FFD700;
 }
 
 /* ── Quiz body ─────────────────────────────────────────── */
