@@ -1,5 +1,5 @@
 // service-worker.js
-const CACHE_NAME = 'quiz-francais-v5';
+const CACHE_NAME = 'quiz-francais-v6';
 const STATIC_ASSETS = [
   '/',
   '/index.html',
