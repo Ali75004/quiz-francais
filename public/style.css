@@ -1,0 +1,295 @@
+/* ── Reset & base ──────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --blue:   #002395;
+  --red:    #ED2939;
+  --white:  #FFFFFF;
+  --bg:     #f0f4ff;
+  --card:   #ffffff;
+  --text:   #1a1a2e;
+  --muted:  #6b7280;
+  --correct:#16a34a;
+  --wrong:  #dc2626;
+  --shadow: 0 4px 24px rgba(0,35,149,.12);
+  --radius: 18px;
+  --font: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+html, body {
+  height: 100%;
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  overflow: hidden;
+}
+
+/* ── Screens ───────────────────────────────────────────── */
+.screen {
+  position: fixed; inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: env(safe-area-inset-top, 16px) 16px env(safe-area-inset-bottom, 16px);
+  overflow-y: auto;
+}
+.screen.active { display: flex; }
+
+/* ── Tricolor bar ──────────────────────────────────────── */
+.tricolor-bar {
+  height: 6px;
+  background: linear-gradient(to right, var(--blue) 33.3%, var(--white) 33.3% 66.6%, var(--red) 66.6%);
+  border-radius: var(--radius) var(--radius) 0 0;
+}
+
+/* ── Start screen ──────────────────────────────────────── */
+#screen-start { background: linear-gradient(145deg, #001a6e 0%, #002395 50%, #1a3a8f 100%); }
+
+.start-card {
+  background: var(--card);
+  border-radius: var(--radius);
+  width: min(420px, 100%);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  text-align: center;
+  padding-bottom: 36px;
+}
+.start-card h1 {
+  font-size: clamp(2.4rem, 8vw, 3.4rem);
+  font-weight: 800;
+  color: var(--blue);
+  padding: 28px 24px 0;
+  line-height: 1.1;
+}
+.start-card h1 span { color: var(--red); }
+.subtitle { color: var(--muted); font-size: .95rem; margin: 8px 0 18px; letter-spacing: .5px; }
+.star-row { font-size: 1.4rem; margin-bottom: 28px; }
+
+/* ── Buttons ───────────────────────────────────────────── */
+.btn-primary {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--blue), #1a3a9e);
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  padding: 14px 40px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform .15s, box-shadow .15s;
+  box-shadow: 0 4px 16px rgba(0,35,149,.3);
+  -webkit-tap-highlight-color: transparent;
+}
+.btn-primary:active { transform: scale(.96); }
+.btn-small { padding: 10px 28px; font-size: .95rem; }
+
+/* ── Quiz header ───────────────────────────────────────── */
+#screen-quiz {
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  padding: 0;
+  background: var(--bg);
+  overflow-y: auto;
+}
+
+.quiz-header {
+  background: var(--blue);
+  padding: calc(env(safe-area-inset-top, 0px) + 14px) 20px 14px;
+  position: sticky; top: 0; z-index: 10;
+}
+.progress-wrap {
+  background: rgba(255,255,255,.25);
+  border-radius: 999px;
+  height: 7px;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(to right, #fff, var(--red));
+  border-radius: 999px;
+  transition: width .4s ease;
+  width: 0%;
+}
+.quiz-meta {
+  display: flex;
+  justify-content: space-between;
+  color: rgba(255,255,255,.85);
+  font-size: .85rem;
+  font-weight: 600;
+}
+
+/* ── Quiz body ─────────────────────────────────────────── */
+.quiz-body {
+  padding: 20px 16px calc(env(safe-area-inset-bottom, 0px) + 24px);
+  max-width: 600px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.question-card {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 22px 20px 20px;
+  box-shadow: var(--shadow);
+  margin-bottom: 18px;
+  animation: slideUp .3s ease;
+}
+.question-category {
+  font-size: .78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--blue);
+  margin-bottom: 10px;
+}
+.question-text {
+  font-size: clamp(1rem, 4vw, 1.25rem);
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--text);
+}
+
+/* ── Choices ───────────────────────────────────────────── */
+.choices {
+  display: grid;
+  gap: 12px;
+}
+.choice-btn {
+  background: var(--card);
+  border: 2.5px solid transparent;
+  border-radius: var(--radius);
+  padding: 15px 18px;
+  font-size: 1rem;
+  font-weight: 500;
+  text-align: left;
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(0,0,0,.07);
+  transition: border-color .15s, background .15s, transform .1s;
+  -webkit-tap-highlight-color: transparent;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+.choice-btn:active { transform: scale(.98); }
+.choice-btn .choice-letter {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: var(--bg);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 800;
+  font-size: .85rem;
+  flex-shrink: 0;
+  transition: background .15s, color .15s;
+  color: var(--blue);
+}
+.choice-btn.correct {
+  border-color: var(--correct);
+  background: #f0fdf4;
+}
+.choice-btn.correct .choice-letter {
+  background: var(--correct);
+  color: #fff;
+}
+.choice-btn.wrong {
+  border-color: var(--wrong);
+  background: #fef2f2;
+}
+.choice-btn.wrong .choice-letter {
+  background: var(--wrong);
+  color: #fff;
+}
+.choice-btn.reveal {
+  border-color: var(--correct);
+  background: #f0fdf4;
+}
+.choice-btn.reveal .choice-letter {
+  background: var(--correct);
+  color: #fff;
+}
+.choice-btn:disabled { cursor: default; }
+
+/* ── End screen ────────────────────────────────────────── */
+#screen-end { background: linear-gradient(145deg, #001a6e 0%, #002395 50%, #1a3a8f 100%); }
+
+.end-card {
+  background: var(--card);
+  border-radius: var(--radius);
+  width: min(420px, 100%);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  text-align: center;
+  padding-bottom: 36px;
+}
+.end-emoji { font-size: 4rem; padding: 28px 0 8px; }
+.end-card h2 { font-size: 1.8rem; font-weight: 800; color: var(--blue); }
+.end-score { font-size: 1.3rem; font-weight: 700; color: var(--text); margin: 12px 0 6px; }
+.end-message { color: var(--muted); font-size: .95rem; padding: 0 24px 24px; margin-top: 6px; }
+
+/* ── Popup ─────────────────────────────────────────────── */
+.popup-overlay {
+  position: fixed; inset: 0; z-index: 999;
+  background: rgba(0,0,0,.65);
+  display: flex; align-items: center; justify-content: center;
+  padding: 20px;
+  animation: fadeIn .2s ease;
+}
+.popup-overlay.hidden { display: none; }
+
+.popup-card {
+  background: var(--card);
+  border-radius: var(--radius);
+  width: min(380px, 100%);
+  overflow: hidden;
+  box-shadow: 0 8px 40px rgba(0,0,0,.3);
+  text-align: center;
+  padding-bottom: 24px;
+  position: relative;
+  animation: popIn .3s cubic-bezier(.34,1.56,.64,1);
+}
+.popup-bravo {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--correct);
+  padding: 20px 16px 12px;
+}
+.popup-close {
+  position: absolute; top: 12px; right: 14px;
+  background: rgba(0,0,0,.08); border: none;
+  border-radius: 50%; width: 30px; height: 30px;
+  font-size: .9rem; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+}
+.popup-img {
+  width: 100%;
+  max-height: 280px;
+  object-fit: cover;
+  display: block;
+}
+.popup-caption {
+  color: var(--muted);
+  font-size: .85rem;
+  padding: 10px 16px 16px;
+  min-height: 36px;
+}
+
+/* ── Animations ────────────────────────────────────────── */
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; } to { opacity: 1; }
+}
+@keyframes popIn {
+  from { opacity: 0; transform: scale(.85); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* ── Landscape phone helper ────────────────────────────── */
+@media (max-height: 500px) {
+  .quiz-body { padding-top: 12px; }
+  .popup-img { max-height: 180px; }
+}
