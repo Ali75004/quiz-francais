@@ -83,6 +83,11 @@ html, body {
 .btn-primary:active { transform: scale(.96); }
 .btn-small { padding: 10px 28px; font-size: .95rem; }
 
+#popup-next {
+  display: block;
+  margin: 4px auto 24px;
+}
+
 /* ── Quiz header ───────────────────────────────────────── */
 #screen-quiz {
   flex-direction: column;
@@ -231,9 +236,14 @@ html, body {
 /* ── Popup ─────────────────────────────────────────────── */
 .popup-overlay {
   position: fixed; inset: 0; z-index: 999;
-  background: rgba(0,0,0,.65);
-  display: flex; align-items: center; justify-content: center;
-  padding: 20px;
+  background: rgba(0,0,0,.85);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: env(safe-area-inset-top, 16px) 16px env(safe-area-inset-bottom, 24px);
   animation: fadeIn .2s ease;
 }
 .popup-overlay.hidden { display: none; }
@@ -241,39 +251,43 @@ html, body {
 .popup-card {
   background: var(--card);
   border-radius: var(--radius);
-  width: min(380px, 100%);
-  overflow: hidden;
-  box-shadow: 0 8px 40px rgba(0,0,0,.3);
+  width: min(460px, 100%);
+  box-shadow: 0 8px 40px rgba(0,0,0,.4);
   text-align: center;
-  padding-bottom: 24px;
   position: relative;
   animation: popIn .3s cubic-bezier(.34,1.56,.64,1);
+  margin: auto;
+  overflow: visible;
 }
 .popup-bravo {
   font-size: 1.8rem;
   font-weight: 800;
   color: var(--correct);
   padding: 20px 16px 12px;
+  border-radius: var(--radius) var(--radius) 0 0;
+  background: var(--card);
 }
 .popup-close {
   position: absolute; top: 12px; right: 14px;
-  background: rgba(0,0,0,.08); border: none;
-  border-radius: 50%; width: 30px; height: 30px;
+  background: rgba(0,0,0,.12); border: none;
+  border-radius: 50%; width: 32px; height: 32px;
   font-size: .9rem; cursor: pointer;
   display: flex; align-items: center; justify-content: center;
+  z-index: 10;
 }
 .popup-img {
   width: 100%;
-  max-height: 70vh;
-  object-fit: contain;
+  height: auto;
   display: block;
-  background: #000;
+  object-fit: contain;
 }
 .popup-caption {
   color: var(--muted);
   font-size: .85rem;
   padding: 10px 16px 16px;
   min-height: 36px;
+  background: var(--card);
+  border-radius: 0 0 var(--radius) var(--radius);
 }
 
 /* ── Animations ────────────────────────────────────────── */
@@ -292,5 +306,4 @@ html, body {
 /* ── Landscape phone helper ────────────────────────────── */
 @media (max-height: 500px) {
   .quiz-body { padding-top: 12px; }
-  .popup-img { max-height: 55vh; }
 }
