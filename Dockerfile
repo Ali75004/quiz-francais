@@ -3,8 +3,9 @@ FROM node:20-alpine
 # Create app directory
 WORKDIR /app
 
-# Copy package files first for layer caching
+# Copy package files and scripts needed for postinstall
 COPY package*.json ./
+COPY scripts/ ./scripts/
 
 # Install dependencies (postinstall will generate icons)
 RUN npm ci --omit=dev
