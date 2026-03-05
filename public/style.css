@@ -264,9 +264,10 @@ html, body {
 }
 .popup-img {
   width: 100%;
-  max-height: 280px;
-  object-fit: cover;
+  max-height: 70vh;
+  object-fit: contain;
   display: block;
+  background: #000;
 }
 .popup-caption {
   color: var(--muted);
@@ -291,5 +292,5 @@ html, body {
 /* ── Landscape phone helper ────────────────────────────── */
 @media (max-height: 500px) {
   .quiz-body { padding-top: 12px; }
-  .popup-img { max-height: 180px; }
+  .popup-img { max-height: 55vh; }
 }
