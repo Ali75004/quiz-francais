@@ -1,62 +1,64 @@
-﻿// ── French Quiz Questions (Débutant A1/A2) ───────────────
+﻿// ── French Quiz Questions (Intermédiaire B1/B2) ──────────
 const QUESTIONS = [
 
   // GRAMMAIRE
-  { category:"Grammaire", question:"Quel article utilise-t-on devant « chat » ?", choices:["une","un","des","la"], answer:1 },
-  { category:"Grammaire", question:"Quel article utilise-t-on devant « maison » ?", choices:["un","le","une","des"], answer:2 },
-  { category:"Grammaire", question:"Quelle phrase est correcte ?", choices:["Je suis fatigué.","Je es fatigué.","Je sont fatigué.","J'ai fatigué."], answer:0 },
-  { category:"Grammaire", question:"Quel est le pluriel de « un livre » ?", choices:["un livres","des livre","des livres","les livre"], answer:2 },
-  { category:"Grammaire", question:"Quel est le féminin de « grand » ?", choices:["grande","grandes","grandi","grandu"], answer:0 },
-  { category:"Grammaire", question:"Complétez : « Elle ___ heureuse. »", choices:["suis","es","est","sommes"], answer:2 },
-  { category:"Grammaire", question:"Quel mot est un adjectif ?", choices:["courir","rouge","maison","vite"], answer:1 },
-  { category:"Grammaire", question:"Quelle phrase utilise correctement « ne…pas » ?", choices:["Je ne mange pas.","Je mange ne pas.","Je pas mange.","Ne je mange pas."], answer:0 },
-  { category:"Grammaire", question:"Quel mot est un pronom sujet ?", choices:["beau","nous","table","jouer"], answer:1 },
-  { category:"Grammaire", question:"Complétez : « ___ est mon ami. »", choices:["Il","Ils","Elle","Elles"], answer:0 },
+  { category:"Grammaire", question:"Quelle phrase est grammaticalement correcte ?", choices:["Je me suis lavé les mains.","Je me suis lavées les mains.","Je m'ai lavé les mains.","J'ai me lavé les mains."], answer:0 },
+  { category:"Grammaire", question:"Dans quelle phrase le mot « tout » est-il correctement accordé ?", choices:["Toutes les filles sont venues.","Tout les garçons sont partis.","Toute les femmes travaillent.","Tous la famille est là."], answer:0 },
+  { category:"Grammaire", question:"Quelle est la nature du mot « lentement » dans « Il parle lentement » ?", choices:["Adjectif","Nom","Adverbe","Verbe"], answer:2 },
+  { category:"Grammaire", question:"Quel est le pluriel correct de « un œil » ?", choices:["des œils","des yeux","des œuils","des œillets"], answer:1 },
+  { category:"Grammaire", question:"Choisissez la forme correcte : « Les enfants se sont ___ leurs devoirs. »", choices:["rappelés à faire","rappelé de faire","rappelés de faire","raappelé à faire"], answer:2 },
+  { category:"Grammaire", question:"Quelle phrase contient un accord incorrect du participe passé ?", choices:["Les filles sont parties.","Il les a vus.","Elle s'est blessée.","Nous avons mangés une pomme."], answer:3 },
+  { category:"Grammaire", question:"Quel est le mode utilisé dans « Il faut que tu viennes » ?", choices:["Indicatif présent","Conditionnel","Subjonctif présent","Impératif"], answer:2 },
+  { category:"Grammaire", question:"Complétez : « Si j'avais su, je ___ venu. »", choices:["serais","serai","suis","seras"], answer:0 },
+  { category:"Grammaire", question:"Quel mot est invariable ?", choices:["beau","bien","grand","premier"], answer:1 },
+  { category:"Grammaire", question:"Dans « C'est lui qui l'a fait », quel est le rôle de « qui » ?", choices:["Pronom interrogatif","Pronom relatif sujet","Pronom relatif objet","Conjonction"], answer:1 },
 
   // CONJUGAISON
-  { category:"Conjugaison", question:"Conjuguez « être » au présent : « tu ___ ».", choices:["sommes","suis","es","êtes"], answer:2 },
-  { category:"Conjugaison", question:"Conjuguez « avoir » au présent : « j'___ ».", choices:["as","ai","avons","a"], answer:1 },
-  { category:"Conjugaison", question:"Conjuguez « manger » au présent : « nous ___ ».", choices:["mangeons","mangez","mangent","manges"], answer:0 },
-  { category:"Conjugaison", question:"Conjuguez « aller » au présent : « il ___ ».", choices:["allez","vont","va","alles"], answer:2 },
-  { category:"Conjugaison", question:"Conjuguez « parler » au présent : « vous ___ ».", choices:["parlons","parlez","parlent","parle"], answer:1 },
-  { category:"Conjugaison", question:"Quel est le participe passé de « finir » ?", choices:["finis","fini","finit","fine"], answer:1 },
-  { category:"Conjugaison", question:"Conjuguez « faire » au présent : « je ___ ».", choices:["fais","fait","faites","font"], answer:0 },
-  { category:"Conjugaison", question:"Au passé composé, quelle phrase est correcte ?", choices:["J'ai mangé une pomme.","J'ai manger une pomme.","J'ai mangée une pomme.","J'ai mangés une pomme."], answer:0 },
-  { category:"Conjugaison", question:"Conjuguez « vouloir » au présent : « il ___ ».", choices:["voulons","veulent","veut","voulez"], answer:2 },
-  { category:"Conjugaison", question:"Conjuguez « pouvoir » au présent : « tu ___ ».", choices:["peux","peut","pouvez","peuvent"], answer:0 },
+  { category:"Conjugaison", question:"Conjuguez « aller » au subjonctif présent : « il faut que tu ___ ». »", choices:["vas","ailles","ires","aies"], answer:1 },
+  { category:"Conjugaison", question:"Conjuguez « être » au passé simple, 3e pers. plur. :", choices:["ils étaient","ils furent","ils ont été","ils seront"], answer:1 },
+  { category:"Conjugaison", question:"Quel est le participe passé de « peindre » ?", choices:["peindé","peint","peindi","peindu"], answer:1 },
+  { category:"Conjugaison", question:"Conjuguez « avoir » au subjonctif présent : « bien que nous ___ ».", choices:["avons","avions","ayons","aiyons"], answer:2 },
+  { category:"Conjugaison", question:"Quel est le participe passé de « naître » ?", choices:["naitré","né","naît","naitu"], answer:1 },
+  { category:"Conjugaison", question:"Conjuguez « finir » au futur antérieur : « ils ___ ».", choices:["auront fini","auront finit","ont fini","avaient fini"], answer:0 },
+  { category:"Conjugaison", question:"Conjuguez « voir » à l'imparfait, 2e pers. sing. :", choices:["tu voyais","tu vois","tu vis","tu verras"], answer:0 },
+  { category:"Conjugaison", question:"Choisissez la forme correcte : « Quand il ___, nous partirons. »", choices:["arrivera","arrive","arriverait","soit arrivé"], answer:0 },
+  { category:"Conjugaison", question:"Conjuguez « résoudre » au passé composé, 1re pers. sing. :", choices:["j'ai résolu","j'ai résous","j'ai résout","j'ai résolvé"], answer:0 },
+  { category:"Conjugaison", question:"Quel temps est employé dans : « Il aurait pu venir » ?", choices:["Conditionnel présent","Conditionnel passé","Futur antérieur","Plus-que-parfait"], answer:1 },
 
   // VOCABULAIRE
-  { category:"Vocabulaire", question:"Que signifie « bonjour » ?", choices:["Bonne nuit","Au revoir","Salutation du matin","Merci"], answer:2 },
-  { category:"Vocabulaire", question:"Dans quel endroit achète-t-on du pain ?", choices:["La pharmacie","La boulangerie","La librairie","La mairie"], answer:1 },
-  { category:"Vocabulaire", question:"Quel est le nom du repas du matin ?", choices:["Le dîner","Le déjeuner","Le petit-déjeuner","Le goûter"], answer:2 },
-  { category:"Vocabulaire", question:"Quel mot signifie « content » ?", choices:["triste","fatigué","heureux","fâché"], answer:2 },
-  { category:"Vocabulaire", question:"Quel est le contraire de « grand » ?", choices:["fort","lent","petit","vieux"], answer:2 },
-  { category:"Vocabulaire", question:"Combien de jours y a-t-il dans une semaine ?", choices:["5","6","7","8"], answer:2 },
-  { category:"Vocabulaire", question:"Quel mot est un fruit ?", choices:["carotte","pomme","brocoli","oignon"], answer:1 },
-  { category:"Vocabulaire", question:"Comment répond-on poliment à « merci » ?", choices:["Bonjour","S'il vous plaît","De rien","Pardon"], answer:2 },
-  { category:"Vocabulaire", question:"Quel est le nom de la saison entre l'été et l'hiver ?", choices:["Le printemps","L'automne","Le soleil","La nuit"], answer:1 },
-  { category:"Vocabulaire", question:"Quel mot désigne un animal domestique ?", choices:["table","chien","rouge","maison"], answer:1 },
+  { category:"Vocabulaire", question:"Qu'est-ce qu'un « néologisme » ?", choices:["Un mot ancien tombé en désuétude","Un mot nouvellement créé","Un mot d'origine étrangère","Un mot sans signification"], answer:1 },
+  { category:"Vocabulaire", question:"Quel est le synonyme de « loquace » ?", choices:["silencieux","bavard","timide","paresseux"], answer:1 },
+  { category:"Vocabulaire", question:"Quel est l'antonyme de « bénévole » ?", choices:["volontaire","altruiste","rémunéré","désintéressé"], answer:2 },
+  { category:"Vocabulaire", question:"Que signifie « péremptoire » ?", choices:["Hésitant, incertain","Qui admet la discussion","Qui s'impose sans réplique","Qui expire rapidement"], answer:2 },
+  { category:"Vocabulaire", question:"Que signifie l'expression « avoir le cafard » ?", choices:["Avoir peur des insectes","Être triste, déprimé","Se sentir en forme","Avoir de mauvais souvenirs"], answer:1 },
+  { category:"Vocabulaire", question:"Que signifie « épistolaire » ?", choices:["Relatif aux épices","Relatif à l'écriture de lettres","Relatif à l'histoire","Relatif à la mer"], answer:1 },
+  { category:"Vocabulaire", question:"Quel est le sens de « circonspect » ?", choices:["Très bavard","Prudent, qui agit avec précaution","Distrait","Courageux"], answer:1 },
+  { category:"Vocabulaire", question:"Que signifie « délétère » ?", choices:["Bienfaisant","Nuisible, nocif","Agréable à lire","Difficile à comprendre"], answer:1 },
+  { category:"Vocabulaire", question:"Quel mot désigne une peur irrationnelle et intense ?", choices:["Une névrose","Une phobie","Une psychose","Une paranoïa"], answer:1 },
+  { category:"Vocabulaire", question:"Que signifie « acrimonie » ?", choices:["Douceur extrême","Amertume, aigreur dans les propos","Générosité excessive","Indifférence froide"], answer:1 },
 
   // ORTHOGRAPHE
-  { category:"Orthographe", question:"Quelle orthographe est correcte ?", choices:["une ékole","une école","une erole","une ekole"], answer:1 },
-  { category:"Orthographe", question:"Comment s'écrit le chiffre 2 en lettres ?", choices:["deuc","deu","deux","dex"], answer:2 },
-  { category:"Orthographe", question:"Quelle orthographe est correcte ?", choices:["un gateau","un gâteau","un gataux","un gateu"], answer:1 },
-  { category:"Orthographe", question:"Quelle orthographe est correcte ?", choices:["la fenaitre","la fenetr","la fenêtre","la fenetre"], answer:2 },
-  { category:"Orthographe", question:"Comment écrit-on le jour qui suit mardi ?", choices:["Mercredi","Mercridi","Marciredi","Mercedi"], answer:0 },
-  { category:"Orthographe", question:"Quelle orthographe est correcte ?", choices:["un lapen","un lapin","un lapain","un lapont"], answer:1 },
-  { category:"Orthographe", question:"Quelle orthographe est correcte ?", choices:["aujordhui","aujourd'hui","aughourdhui","augourdhui"], answer:1 },
-  { category:"Orthographe", question:"Comment écrit-on la couleur du ciel par beau temps ?", choices:["bleu","bleux","blet","bleau"], answer:0 },
+  { category:"Orthographe", question:"Quelle orthographe est correcte ?", choices:["il aprend","il apprends","il apprend","il apprant"], answer:2 },
+  { category:"Orthographe", question:"Choisissez la bonne orthographe :", choices:["une nénuphar","un nénoufar","un nénuphar","un ninuphar"], answer:2 },
+  { category:"Orthographe", question:"Quelle phrase contient une erreur ?", choices:["Elle s'est assise.","Nous avons mangés une pomme.","Ils sont partis tôt.","Il a pris son manteau."], answer:1 },
+  { category:"Orthographe", question:"Choisissez l'orthographe correcte :", choices:["un aprenti","un apprentit","un apprenti","un appranti"], answer:2 },
+  { category:"Orthographe", question:"Quelle est la bonne orthographe ?", choices:["il interrompt","il interromp","il interrumpt","il interromps"], answer:0 },
+  { category:"Orthographe", question:"Quel mot s'écrit avec un accent circonflexe ?", choices:["grace","age","boite","île"], answer:3 },
+  { category:"Orthographe", question:"Comment s'écrit correctement ?", choices:["une paranthèse","une parenthèse","une parentèse","une parantèse"], answer:1 },
+  { category:"Orthographe", question:"Quelle est la bonne orthographe ?", choices:["un chrysanthème","un crysanthème","un chrisanthème","un chrysantème"], answer:0 },
 
-  // NOMBRES
-  { category:"Nombres", question:"Comment dit-on 10 en français ?", choices:["neuf","onze","dix","huit"], answer:2 },
-  { category:"Nombres", question:"Combien font 5 + 7 ?", choices:["onze","douze","treize","dix"], answer:1 },
-  { category:"Nombres", question:"Comment s'écrit 20 en lettres ?", choices:["dix-neuf","vingt","vingts","vint"], answer:1 },
-  { category:"Nombres", question:"Quel nombre vient après « dix-neuf » ?", choices:["dix-huit","vingt et un","vingt","dix-dix"], answer:2 },
+  // FIGURES DE STYLE
+  { category:"Figures de style", question:"Dans « Le vent gémit dans les arbres », quelle figure est utilisée ?", choices:["Métaphore","Personnification","Hyperbole","Comparaison"], answer:1 },
+  { category:"Figures de style", question:"Quelle figure de style est : « blanc comme neige » ?", choices:["Métaphore","Allitération","Comparaison","Antithèse"], answer:2 },
+  { category:"Figures de style", question:"Dans « Il pleuvait des cordes », quel procédé reconnaît-on ?", choices:["Litote","Métaphore","Oxymore","Anaphore"], answer:1 },
+  { category:"Figures de style", question:"Qu'est-ce qu'une « antithèse » ?", choices:["Une répétition de sons","Une opposition de deux idées","Une exagération volontaire","Une comparaison implicite"], answer:1 },
+  { category:"Figures de style", question:"« Cette obscure clarté » est un exemple de :", choices:["Métaphore","Anaphore","Oxymore","Hyperbole"], answer:2 },
+  { category:"Figures de style", question:"Qu'est-ce qu'une litote ?", choices:["Une exagération","Dire moins pour suggérer plus","Une comparaison directe","Une répétition"], answer:1 },
 
-  // JOURS & MOIS
-  { category:"Jours & Mois", question:"Quel jour vient après le vendredi ?", choices:["Jeudi","Dimanche","Samedi","Lundi"], answer:2 },
-  { category:"Jours & Mois", question:"Quel est le premier mois de l'année ?", choices:["Février","Mars","Décembre","Janvier"], answer:3 },
-  { category:"Jours & Mois", question:"Combien de mois compte une année ?", choices:["10","11","12","13"], answer:2 },
-  { category:"Jours & Mois", question:"Quel mois vient après juillet ?", choices:["Juin","Septembre","Août","Octobre"], answer:2 }
+  // CULTURE DE LA LANGUE
+  { category:"Culture", question:"Quel organisme est chargé de défendre la langue française ?", choices:["L'Institut national des langues","L'Académie française","Le Conseil de la langue","L'Office du français"], answer:1 },
+  { category:"Culture", question:"Quel est le mot français d'origine arabe parmi ces propositions ?", choices:["soleil","sucre","nuage","maison"], answer:1 },
+  { category:"Culture", question:"Combien de lettres compte l'alphabet français ?", choices:["24","25","26","27"], answer:2 },
+  { category:"Culture", question:"De quelle langue le mot « parapluie » est-il composé ?", choices:["Latin et grec","Deux mots français","Latin et arabe","Espagnol et latin"], answer:1 }
 
 ];
